@@ -4,6 +4,10 @@ on:
   push:
 
 
+env:
+  PREFIX: abc
+
+
 jobs:
   first:
     runs-on: ubuntu-latest
