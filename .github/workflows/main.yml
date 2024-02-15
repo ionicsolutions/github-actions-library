@@ -23,11 +23,35 @@ jobs:
         run: |
           flake8 --max-line-length=120
 
-    # Job "unit" anlegen
-    # Code auschecken und Python 3.12 installieren
-    # Poetry installieren und Abhängigkeiten installieren:
-    #    pip install poetry
-    #    poetry install --no-interaction --no-root
-    # Tests ausführen
-    #    im Ordner "src":
-    #    poetry run pytest --cov tests/
+        # Job "unit" anlegen
+        # Code auschecken und Python 3.12 installieren
+        # Poetry installieren und Abhängigkeiten installieren:
+        #    pip install poetry
+        #    poetry install --no-interaction --no-root
+        # Tests ausführen
+        #    im Ordner "src":
+        #    poetry run pytest --cov tests/
+
+  unit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install Poetry
+        run: |
+          pip install poetry
+
+      - name: Install dependencies
+        run: |
+          poetry install --no-interaction --no-root
+        
+      - name: Run tests
+        run: |
+          cd src
+          poetry run pytest --cov tests/
