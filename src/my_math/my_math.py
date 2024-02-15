@@ -28,3 +28,7 @@ def catalan_number(n):
     if n < 0:
         raise ValueError("Catalan number is not defined for negative numbers")
     return factorial(2 * n) // (factorial(n + 1) * factorial(n))
+
+
+def addition(n, m):
+    return n + m
