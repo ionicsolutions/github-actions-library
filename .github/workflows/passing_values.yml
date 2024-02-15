@@ -17,7 +17,15 @@ jobs:
           echo "random-string=${RANDOM_STRING}" >> $GITHUB_OUTPUT
           echo "constant=1234" >> $GITHUB_OUTPUT
 
-      - name: Later
+      - name: Outputs direkt nutzen
         run: |
           echo "Random string: ${{ steps.generate.outputs.random-string }}"
           echo "Constant: ${{ steps.generate.outputs.constant }}"
+
+      - name: Outputs als Umgebungsvariablen nutzen
+        env:
+          PREFIX: pre
+          KEY: ${{ steps.generate.outputs.random-string }}
+          ID: ${{ steps.generate.outputs.constant }}
+        run: |
+          echo "${PREFIX}-${KEY}-${ID}"
