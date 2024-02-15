@@ -22,4 +22,12 @@ jobs:
       - name: Run Flake8
         run: |
           flake8 --max-line-length=120
-          
+
+    # Job "unit" anlegen
+    # Code auschecken und Python 3.12 installieren
+    # Poetry installieren und Abhängigkeiten installieren:
+    #    pip install poetry
+    #    poetry install --no-interaction --no-root
+    # Tests ausführen
+    #    im Ordner "src":
+    #    poetry run pytest --cov tests/
